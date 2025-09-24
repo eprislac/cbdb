@@ -1,0 +1,8 @@
+db_data/**/*
+./db_data/
+./db_data/**/*
+/pgadmin-data/**/*
+./pgadmin-data/**/*
+./ruby-lsp/**/*
+./.moon/cache
+./.moon/cache/**
