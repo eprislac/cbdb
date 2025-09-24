@@ -1,0 +1,6 @@
+[submodule "apps/cbdb_api"]
+	path = apps/cbdb_api
+	url = git@github.com:eprislac/cbdb_api
+[submodule "apps/cbdb_client"]
+	path = apps/cbdb_client
+	url = git@github.com:eprislac/cbdb_client
