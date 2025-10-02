@@ -28,11 +28,12 @@ services:
       context: ./apps/cbdb_api/
       dockerfile: "Dockerfile"
     volumes:
-      - .:/app
+      - ./apps/cbdb_api:/app
     environment:
       PORT: 3000
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       VIRTUAL_HOST: api.cbdb.mine
+      APP_SECRET: ${APP_SECRET}
     env_file:
       - .env
     ports:
@@ -41,6 +42,11 @@ services:
       - cbdb_local
     depends_on:
       - database
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/cbdb_api/
+          target: /app
 
   client:
     build:
@@ -49,10 +55,12 @@ services:
     environment:
       PORT: 80
       VIRTUAL_HOST: cbdb.mine
+      APP_SECRET: ${APP_SECRET}
     env_file:
       - .env
     volumes:
-      - .:/rails
+      - ./apps/cbdb_client:/app
+      - ./apps/cbdb_client/node_modules:/app/node_modules
     ports:
       - 80:80
     networks:
@@ -60,6 +68,11 @@ services:
     depends_on:
       - database
       - api
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/cbdb_client/
+          target: /app
 
 networks:
   cbdb_local:

@@ -1,0 +1,30 @@
+# ==== Commit Message Format ====
+# <type>(<scope>)[CBDB-<issue_id>]: <subject>
+# 
+# <optional body>
+# 
+# <optional footer>
+
+# ==== Full Example ====
+# feat(auth)[CBDB-42]: implement user registration flow
+# fix(database)[CBDB-17]: resolve connection pooling leak
+# docs(readme)[CBDB-89]: update project setup instructions
+
+# ==== Commit Type Prefixes ====
+# 🆕 feat:     A new feature
+# 🐛 fix:      A bug fix
+# 📝 docs:     Documentation only changes
+# 🎨 style:    Formatting, missing semi colons, etc; no code change
+# 🔨 refactor: Refactoring production code
+# 🚀 perf:     A code change that improves performance
+# 🧪 test:     Adding missing tests or correcting existing tests
+# 🛠 chore:    Maintenance tasks, updates to build process
+# 🔒 security: Security-related changes
+
+# ==== CBDB Specific Guidance ====
+# - Project ID is MANDATORY
+# - Use CBDB-<number> format
+# - Keep total subject line under 72 characters
+# - Use imperative mood
+# - Capitalize first letter
+# - No period at end of subject line
