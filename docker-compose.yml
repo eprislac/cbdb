@@ -42,10 +42,22 @@ services:
       - cbdb_local
     depends_on:
       - database
+    command: /usr/bin/entrypoint.sh
     develop:
       watch:
-        - action: sync
-          path: ./apps/cbdb_api/
+        - action: rebuild
+          path: ./apps/cbdb_api/**/*
+          target: /app
+          ignore:
+            - node_modules/
+            - tmp/
+            - log/
+            - vendor/
+            - .git/
+        - action: rebuild
+          path: Gemfile
+        - action: rebuild
+          path: ./apps/cbdb_api/**/*
           target: /app
 
   client:
@@ -70,7 +82,7 @@ services:
       - api
     develop:
       watch:
-        - action: sync
+        - action: rebuild
           path: ./apps/cbdb_client/
           target: /app
 

@@ -43,15 +43,14 @@ abilities in the process.
 ### Technologies Used
 
 - Dev Environment:
-  - Docker
-  - Docker Compose
-  - moon monorepo tool
-  - proto language version manager
-- Frontend: NEXT.js, Tailwind CSS, Auth0, pnpm
-  - testing: Jest, Playwright, Storybook, Cucumber
-- Backend: Ruby on Rails, PostgreSQL
-  - testing: RSpec, FactoryBot, Cucumber
-- CI/CD: Github Actions
+  - [Docker](), [Docker Compose]() and [Dockerfile]() for containerization
+  - [moon]() monorepo tool
+  - [proto]() language version manager
+- Frontend: [NEXTjs](), [Tailwind CSS](), [Auth0](), [HeroUI](), [pnpm]()
+  - testing: [Jest](), [Playwright](), [Storybook](), [Cucumber]()
+- Backend: [Ruby on Rails](), [PostgreSQL]()
+  - testing: [RSpec](), [FactoryBot](), [Cucumber]()
+- CI/CD: [Github Actions]()
 
 ### Installation
 
@@ -70,3 +69,37 @@ abilities in the process.
 3. Set up environment variables:
    - Copy the `.env.example` file to `.env` and fill in the required values
      (#TODO: create .env.example file)
+   - Ensure you have the necessary credentials for Auth0 and PostgreSQL
+   - Example variables:
+     - `AUTH0_DOMAIN`
+     - `AUTH0_CLIENT_ID`
+     - `RAILS_ENV=development`
+4. Build and start the Docker containers:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+5. Access the application:
+   - Frontend: `http://localhost`
+   - Backend: `http://localhost:3000` (accessible via cbdb network as `http://api`)
+   - Database: `localhost:5432` (accessible via cbdb network as `database`)
+
+### Monorepo Structure
+
+/apps/
+
+- cbdb_client/: (sub-module) Next.js application
+- cbdb_api/: (sub-module) Ruby on Rails API
+- cbdb_public_api/: (sub-module) API for public access (TODO)
+- cbdb_mcp/: (sub-module) MCP server for public API integration (TODO)
+- db_data/: PostgreSQL data volume
+- pgadmin-data/: pgAdmin data volume
+- .moon/: moon configuration directory
+- .prototools: proto version manager configuration
+- .github/: GitHub Actions workflows
+- .gitignore: Git ignore file
+- .gitmodules: Git submodule configuration
+- .env.example: Example environment variables file (TODO)
+- .dockerignore: Docker ignore file
+- docker-compose.yml: Docker Compose configuration
